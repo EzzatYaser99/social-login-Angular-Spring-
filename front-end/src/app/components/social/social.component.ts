@@ -1,29 +1,52 @@
 import {Component, OnInit} from '@angular/core';
-import {FacebookLoginProvider, GoogleLoginProvider, SocialAuthService} from "@abacritt/angularx-social-login";
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser
+} from "@abacritt/angularx-social-login";
+
+
 
 @Component({
   selector: 'app-social',
   templateUrl: './social.component.html',
   styleUrls: ['./social.component.css']
 })
-export class SocialComponent implements OnInit{
+export class SocialComponent implements OnInit {
 
-  constructor(private authService: SocialAuthService) { }
-  ngOnInit(): void {
+  user: SocialUser | undefined;
+  isLogin: boolean | undefined ;
+
+
+  constructor(private authService: SocialAuthService) {
   }
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data =>{
 
+  ngOnInit(): void {
+    this.authService.authState.subscribe(
+      data => {
+        this.isLogin =(data != null);
+
+      }
+    )
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
+
+      this.user=data;
       console.log(data);
-    } );
+    });
   }
 
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data =>{
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
+      this.user=data;
       console.log(data);
 
-    } );
+    });
   }
+
   signOut(): void {
     this.authService.signOut();
   }
