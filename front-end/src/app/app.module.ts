@@ -16,7 +16,7 @@ const routes:Routes=[
   {path:'profile',component:ProfileComponent},
   {path:'**',redirectTo:'/home'}
 ];
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import {
   GoogleLoginProvider,
   FacebookLoginProvider
@@ -43,7 +43,7 @@ import {
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            '803156181861-vtasi29r1qdjq1st1etlk6jjvuiisd2n.apps.googleusercontent.com'
+            '803156181861-pl6i0u2qa895narbcu9duhoubcenk6oe.apps.googleusercontent.com'
           )
         },
         {
