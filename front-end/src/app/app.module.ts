@@ -43,15 +43,17 @@ import {
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            '803156181861-ovvpl2oiq9ov18ej8mnosmsf31h6r0pd.apps.googleusercontent.com'
+            '803156181861-vtasi29r1qdjq1st1etlk6jjvuiisd2n.apps.googleusercontent.com'
           )
         },
         {
           id: FacebookLoginProvider.PROVIDER_ID,
           provider: new FacebookLoginProvider('1885778288429491')
         }
-      ]
-
+      ],
+      onError: (err) => {
+        console.error(err);
+      }
 
     } as SocialAuthServiceConfig,
   }
