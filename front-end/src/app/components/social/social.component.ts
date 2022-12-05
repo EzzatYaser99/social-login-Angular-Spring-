@@ -15,8 +15,8 @@ import {
 })
 export class SocialComponent implements OnInit {
 
-  user: SocialUser | undefined;
-  isLogin: boolean | undefined ;
+  user: SocialUser =new SocialUser();
+  isLogin: boolean = false ;
 
 
   constructor(private authService: SocialAuthService) {
